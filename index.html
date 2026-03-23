@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CI/CD Animated App</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(270deg, #ff6ec4, #7873f5, #42e695);
+            background-size: 600% 600%;
+            animation: gradientBG 10s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        h1 {
+            color: white;
+            margin-bottom: 20px;
+            animation: slideDown 1.5s ease;
+        }
+
+        p {
+            color: #f1f1f1;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 25px;
+            background: linear-gradient(45deg, #ff512f, #dd2476);
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px #ff512f;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        @keyframes slideDown {
+            from {transform: translateY(-50px); opacity: 0;}
+            to {transform: translateY(0); opacity: 1;}
+        }
+
+        .success {
+            color: #00ffcc;
+            font-weight: bold;
+            animation: pop 0.5s ease;
+        }
+
+        @keyframes pop {
+            0% {transform: scale(0.8);}
+            100% {transform: scale(1);}
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🚀 CI/CD Pipeline Live</h1>
+    <p id="msg">Click the button to test animation</p>
+
+    <button onclick="changeText()">Click Me</button>
+</div>
+
+<script>
+function changeText() {
+    let msg = document.getElementById("msg");
+    msg.innerHTML = "✅ Deployment Successful!";
+    msg.classList.add("success");
+}
+</script>
+
+</body>
+</html>

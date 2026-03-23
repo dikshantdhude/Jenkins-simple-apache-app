@@ -1,0 +1,8 @@
+
+
+services:
+  web:
+    image: dikshantdhude/apache:v2
+    ports:
+      - "8080:80"
+   
