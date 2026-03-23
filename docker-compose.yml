@@ -2,7 +2,7 @@
 
 services:
   web:
-    image: dikshantdhude/apache:v2
+    image: dikshantdhude28/apache:jenkins
     ports:
-      - "8080:80"
+      - "8000:80"
    
