@@ -1,0 +1,35 @@
+pipeline{
+    agent {label 'dd'}
+    stages{
+        stage('repo-clonig'){
+            steps{
+                git branch: 'Main', changelog: false, poll: false, url: 'https://github.com/dikshantdhude/Jenkins-simple-apache-app'             }
+        }
+        stage('build'){
+            steps{
+                sh 'docker build -t dikshantdhude28/apache:jenkins .'
+            }
+        }
+        stage('deploy'){
+            steps{
+                sh 'docker compose up -d'
+            }
+        }
+        stage('login'){
+            steps{
+                 withCredentials([usernamePassword(credentialsId: 'dikshantdhude28',
+                                                      passwordVariable: 'DockerhubPassword',
+                                                      usernameVariable: 'DockerhubUserName')]) {
+                        
+                        sh 'echo "$DockerhubPassword" | docker login -u "$DockerhubUserName" --password-stdin '
+                        
+            }
+        }
+    }
+    stage('push the image  '){
+            steps{
+                sh 'docker push dikshantdhude28/apache:jenkins'
+            }
+        }
+    }           
+}        
